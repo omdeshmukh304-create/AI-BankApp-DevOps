@@ -302,7 +302,7 @@ All scan reports (OWASP, Trivy, ZAP) are uploaded as downloadable **Artifacts** 
 
 This project was developed by taking inspiration and reference from the following repository user:
 
-- [User Name](https://github.com/TrainWithShubham)
+- [TrainWithShubham](https://github.com/TrainWithShubham)
 
 Using that repository as a reference, I built *AI-BankApp-DevOps* and extended it with:
 - AI integration (Ollama)
