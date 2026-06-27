@@ -298,6 +298,18 @@ All scan reports (OWASP, Trivy, ZAP) are uploaded as downloadable **Artifacts** 
 
 <div align="center">
 
+## Acknowledgements
 
+This project was developed by taking inspiration and reference from the following repository user:
 
-</div>
+- [User Name](https://github.com/TrainWithShubham)
+
+Using that repository as a reference, I built *AI-BankApp-DevOps* and extended it with:
+- AI integration (Ollama)
+- Docker & Docker Compose
+- Kubernetes
+- Helm Charts
+- GitHub Actions CI/CD
+- ArgoCD GitOps deployment
+- Terraform-based AWS infrastructure
+- Security scanning and DevOps best practic
