@@ -11,7 +11,8 @@ A high-performance, containerized financial platform built with Spring Boot 3, J
 
 </div>
 
-<img width="841" height="442" alt="image" src="https://github.com/user-attachments/assets/cae77a97-893a-4236-9df7-01296ac619dd" />
+<img width="1715" height="917" alt="AI-Bankapp-interface" src="https://github.com/user-attachments/assets/d28842ad-4a96-4be7-afed-705fd76549c6" />
+
 
 
 ---
@@ -98,7 +99,6 @@ The CI/CD pipeline enforces **9 sequential security gates** before any code reac
 
    - Establish a private ECR repository named `devsecops-bankapp`.
 
-      <img width="762" height="120" alt="image" src="https://github.com/user-attachments/assets/23469aa4-b2f8-455b-a90d-c66fc6130c4a" />
 
 
 2. **Application Server (EC2)**:
@@ -123,12 +123,12 @@ The CI/CD pipeline enforces **9 sequential security gates** before any code reac
      - `AmazonEC2ContainerRegistryPowerUser`
      - `AWSSecretsManagerClientReadOnlyAccess`
 
-        <img width="735" height="175" alt="image" src="https://github.com/user-attachments/assets/59c652cf-8c71-41cd-a84f-f77f9675a7a4" />
+
 
 
    - Attach it to Application EC2. Select EC2 -> Actions -> Security -> Modify IAM role -> Attach created IAM role.
 
-      <img width="760" height="140" alt="image" src="https://github.com/user-attachments/assets/100e7cb1-d073-4d16-8933-e0264287c011" />
+
 
    
    - Connect to EC2 Instance and Run below command to check whether IAM role is working or not.
@@ -145,12 +145,12 @@ The CI/CD pipeline enforces **9 sequential security gates** before any code reac
 
       > Better to give `name` to Security Group created.
         
-      <img width="777" height="280" alt="image" src="https://github.com/user-attachments/assets/81618a08-10d6-444e-9771-9ee61fbe9474" />
+
 
 
    - Automate initialization using the [ollama-setup.sh](scripts/ollama-setup.sh) script via EC2 User Data.
     
-     <img width="777" height="490" alt="image" src="https://github.com/user-attachments/assets/3ea6180c-7d36-468a-b5b1-818d7c4eb7e7" />
+
 
 
    - Verify the AI engine is responsive and the model is pulled in `AI engine EC2`:
@@ -158,8 +158,6 @@ The CI/CD pipeline enforces **9 sequential security gates** before any code reac
      ```bash
      ollama list
      ```
-
-      <img width="576" height="86" alt="image" src="https://github.com/user-attachments/assets/3975e1de-c13f-4d26-834f-1b3740215232" />
 
 
 ---
@@ -172,7 +170,7 @@ The deployment pipeline utilizes OpenID Connect (OIDC) for secure, keyless authe
    - Provider URL: `https://token.actions.githubusercontent.com`
    - Audience: `sts.amazonaws.com`
 
-      <img width="777" height="352" alt="image" src="https://github.com/user-attachments/assets/c117a610-0fae-4f6a-a5b0-93dd98d5c760" />
+
 
 
 2. **Deployment Role**:
@@ -186,17 +184,17 @@ The deployment pipeline utilizes OpenID Connect (OIDC) for secure, keyless authe
       - `GitHub branch`: branch to use for this project `(e.g, devsecops)`
       - Click on `Next`
 
-      <img width="782" height="455" alt="image" src="https://github.com/user-attachments/assets/e0dbf361-2bc3-43f3-a165-79d329223efc" />
+
 
 
    - Assign `AmazonEC2ContainerRegistryPowerUser` permissions.
 
-      <img width="777" height="236" alt="image" src="https://github.com/user-attachments/assets/4bf99cfa-d3ca-45c0-8b1d-09765eb62cdd" />
+
 
 
    - Click on `Next`, Enter name of role and click on `Create role`.
 
-      <img width="780" height="502" alt="image" src="https://github.com/user-attachments/assets/4a17141c-4653-4cef-9df4-f03263138c3e" />
+ 
 
 
 ---
@@ -215,7 +213,6 @@ Create a secret named `bankapp/prod-secrets` in `Other type of secret` with the 
 | `DB_PASSWORD` | The database password | `Test@123` |
 | `OLLAMA_URL` | The private URL for the AI tier | `http://<PRIVATE-IP>:11434` |
 
-<img width="827" height="401" alt="image" src="https://github.com/user-attachments/assets/2ab93bfa-a5ef-44c8-85e2-fd4d377a84e6" />
 
 
 #### 2. GitHub Repository Secrets
@@ -256,14 +253,11 @@ All scan reports (OWASP, Trivy, ZAP) are uploaded as downloadable **Artifacts** 
 
 - CI/CD
 
-   <img width="797" height="142" alt="image" src="https://github.com/user-attachments/assets/34cae089-d24c-4c47-8707-9d60ad8ae813" />
+
 
 
 - Artifacts
 
-  <img width="805" height="435" alt="image" src="https://github.com/user-attachments/assets/ffe9d40c-1180-40e4-99e2-db20ffd50c18" />
-
-   
 ---
 
 ## Operational Verification
@@ -271,7 +265,6 @@ All scan reports (OWASP, Trivy, ZAP) are uploaded as downloadable **Artifacts** 
 
 - **Application Working**:
 
-  <img width="812" height="452" alt="image" src="https://github.com/user-attachments/assets/4c767dfc-7277-42fa-9f1f-9b184f5c1a71" />
 
 
 - **Database Connectivity**: 
@@ -280,7 +273,6 @@ All scan reports (OWASP, Trivy, ZAP) are uploaded as downloadable **Artifacts** 
   docker exec -it db mysql -u <USER> -p bankappdb -e "SELECT * FROM accounts;"
   ```
 
-  <img width="815" height="132" alt="image" src="https://github.com/user-attachments/assets/ea2abca5-e071-4e7c-8a64-16928a041302" />
 
 
   > **ZAP** is automatically created by **DAST - OWASP ZAP Baseline Scan** job in [cd.yml](.github/workflows/cd.yml). Read more about it(How, Why it does) on google...
@@ -291,7 +283,7 @@ All scan reports (OWASP, Trivy, ZAP) are uploaded as downloadable **Artifacts** 
   nc -zv <OLLAMA-PRIVATE-IP> 11434
   ```
 
-  <img width="562" height="95" alt="image" src="https://github.com/user-attachments/assets/11a91a30-e353-45f9-ba0b-c3292a93bcea" />
+
 
 
 ---
