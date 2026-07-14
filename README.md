@@ -11,7 +11,7 @@ A high-performance, containerized financial platform built with Spring Boot 3, J
 
 </div>
 
-![alt text](<Screenshot 2026-07-09 170708.png>)
+![alt text](image-1.png)
 
 
 
